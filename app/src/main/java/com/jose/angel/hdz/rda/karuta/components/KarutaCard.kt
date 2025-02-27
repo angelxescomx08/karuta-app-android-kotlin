@@ -12,10 +12,13 @@ import androidx.compose.ui.unit.dp
 import com.jose.angel.hdz.rda.karuta.data.KarutaCard
 
 @Composable
-fun KarutaCard(card: KarutaCard){
+fun KarutaCard(card: KarutaCard, onClick: (id: Int) -> Unit){
     Card (
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        onClick = {
+            onClick(card.id.toInt())
+        }
     ){
         Column(
             modifier = Modifier.padding(10.dp)

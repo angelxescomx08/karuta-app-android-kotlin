@@ -16,10 +16,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.jose.angel.hdz.rda.karuta.data.cards
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CardView(navController: NavController){
+fun CardView(navController: NavController, card_id: Int){
+    val card = cards[card_id]
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -33,16 +35,15 @@ fun CardView(navController: NavController){
                 .fillMaxSize()
                 .padding(innerPadding),
 
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "CARD")
-            Spacer(modifier = Modifier.height(10.dp))
-            Button(onClick = {
-                navController.navigate("home")
-            }) {
-                Text(text = "Ir al home")
-            }
+            Text(card.japanese)
+            Text("Romaji: ${card.romaji}")
+            Text("Author (Kanjis): ${card.authorJapanese}")
+            Text("Author: ${card.author}")
+            Text("Poem name: ${card.name}")
+            Text("${card.id}. ${card.silaba}")
+            Text(card.english)
+            Text(card.spanish)
         }
     }
 }

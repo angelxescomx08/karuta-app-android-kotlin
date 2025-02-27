@@ -42,8 +42,10 @@ fun HomeView(navController: NavController){
             verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(cards){
-               KarutaCard(it)
+            items(cards){ card ->
+               KarutaCard(card, {
+                   navController.navigate("card/${card.id}")
+               })
             }
         }
     }

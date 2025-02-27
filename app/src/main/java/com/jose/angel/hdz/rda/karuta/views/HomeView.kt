@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.jose.angel.hdz.rda.karuta.components.KarutaCard
+import com.jose.angel.hdz.rda.karuta.data.KarutaCard
+import com.jose.angel.hdz.rda.karuta.data.cards
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -29,20 +34,16 @@ fun HomeView(navController: NavController){
             })
         }
     ) { innerPadding ->
-        Column(
+        LazyColumn (
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
 
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "HOME")
-            Spacer(modifier = Modifier.height(10.dp))
-            Button(onClick = {
-                navController.navigate("card/${123}")
-            }) {
-                Text(text = "Ir al card")
+            items(cards){
+               KarutaCard(it)
             }
         }
     }

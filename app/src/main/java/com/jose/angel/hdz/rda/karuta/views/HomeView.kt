@@ -30,7 +30,7 @@ fun HomeView(navController: NavController){
         modifier = Modifier.fillMaxSize(),
         topBar = {
             CenterAlignedTopAppBar(title = {
-                Text(text = "Home")
+                Text(text = "Karuta App")
             })
         }
     ) { innerPadding ->

@@ -1,5 +1,6 @@
 package com.jose.angel.hdz.rda.karuta.views
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,7 +27,9 @@ fun CardView(navController: NavController, card_id: Int){
         modifier = Modifier.fillMaxSize(),
         topBar = {
             CenterAlignedTopAppBar(title = {
-                Text(text = "Card")
+                Text(text = "Karuta App", Modifier.clickable {
+                    navController.navigate("home")
+                })
             })
         }
     ) { innerPadding ->
